@@ -1,0 +1,4 @@
+Ignoring all the Bootstrap-Stuff
+assets/*
+dist/*
+example.php
