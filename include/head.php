@@ -18,3 +18,5 @@
   <!-- Custom styles for this template -->
   <link href="css/theme.css" rel="stylesheet">
 </head>
+<?php include('config.inc.php'); ?>
+  <body role="document">

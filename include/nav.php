@@ -18,7 +18,7 @@
             <li><a href="#">Weinvorrat</a></li>
             <li><a href="#">Weinsorten</a></li>
             <li><a href="#">Regale</a></li>
-            <li><a href="#">Typen</a></li>
+            <li><a href="types.php">Typen</a></li>
           </ul>
         </li>
       </ul>
