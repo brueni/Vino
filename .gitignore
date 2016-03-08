@@ -2,3 +2,4 @@ Ignoring all the Bootstrap-Stuff
 assets/*
 dist/*
 example.php
+include/config.inc.php

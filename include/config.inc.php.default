@@ -1,0 +1,10 @@
+<?php
+
+					//defines the mysql-settings
+					$servers['host']="";
+					$servers['user']="";
+					$servers['password']="";
+					$servers['db']="";
+
+					include("db.inc.php");
+					?>
