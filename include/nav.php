@@ -15,9 +15,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Verwalten<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Weinvorrat</a></li>
-            <li><a href="#">Weinsorten</a></li>
-            <li><a href="#">Regale</a></li>
+            <li><a href="entries.php#">Weinvorrat</a></li>
+            <li><a href="wines.php">Weinsorten</a></li>
+            <li><a href="regales.php">Regale</a></li>
             <li><a href="types.php">Typen</a></li>
           </ul>
         </li>
