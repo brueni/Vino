@@ -13,12 +13,14 @@
     <tbody>
       <?php
         $query = "SELECT * FROM types";
-        
+        $result = mysql_query($query, $db);
+        while($row = mysql_fetch_assoc($result)) {
+          echo "<tr>
+            <td>" . $row['id'] . "</td>
+            <td>" . $row['name'] . "</td>
+          </tr>";
+        }
       ?>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-      </tr>
     </tbody>
   </table>
 </div>
