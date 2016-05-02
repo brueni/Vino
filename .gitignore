@@ -1,5 +1,6 @@
 Ignoring all the Bootstrap-Stuff
 assets/*
 dist/*
+img/*
 example.php
 include/config.inc.php
