@@ -37,7 +37,8 @@
       } else {
           if (move_uploaded_file($_FILES["upload_picture"]["tmp_name"], $target_file)) {
               $picturename = basename($_FILES["upload_picture"]["name"]);
-              $query = "INSERT INTO `wine_def` (`id`, `name`, `description`, `type`, `price`, `store_time`, `picture`) VALUES (NULL, '$_POST[name]', '$_POST[description]', '$_POST[type]', '$_POST[price]', '$_POST[store_time]', '$picturename')";
+              $query = "INSERT INTO `wine_def` (`id`, `name`, `description`, `type`, `source`, `price`, `store_time`, `picture`) VALUES (NULL, '$_POST[name]', '$_POST[description]', '$_POST[type]',  '$_POST[source]', '$_POST[price]', '$_POST[store_time]', '$picturename')";
+              echo $query;
               mysql_query($query, $db);
           } else {
               echo "Sorry, there was an error uploading your file.";
@@ -55,6 +56,7 @@
         <th>Name</th>
         <th>Beschreibung</th>
         <th>Typ</th>
+        <th>Quelle</th>
         <th>Preis</th>
         <th>Lagerdauer</th>
         <th>Bild</th>
@@ -71,6 +73,7 @@
             <td>" . $row['name'] . "</td>
             <td>" . $row['description'] . "</td>
             <td>" . $row['types_name'] . "</td>
+            <td>" . $row['source'] . "</td>
             <td>" . $row['price'] . "</td>
             <td>" . $row['store_time'] . "</td>
             <td><img src=\"img/" . $row['picture'] . "\" width=\"100px\" height=\"100px\"></td>
@@ -79,7 +82,7 @@
         }
       ?>
       <tr>
-        <td colspan="7"><b>Neuen Typ erfassen</b></td>
+        <td colspan="8"><b>Neuen Typ erfassen</b></td>
       </tr>
       <form action="?submit" method="post" enctype="multipart/form-data">
       <tr>
@@ -95,6 +98,7 @@
         }
          ?>
         </select></td>
+        <td><input type="text" name="source"></td>
         <td><input type="text" name="price"></td>
         <td><input type="text" name="store_time"></td>
         <td><input type="file" name="upload_picture" id="upload_picture"</td>
