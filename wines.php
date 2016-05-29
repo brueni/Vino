@@ -82,7 +82,7 @@
         }
       ?>
       <tr>
-        <td colspan="8"><b>Neuen Typ erfassen</b></td>
+        <td colspan="8"><b>Neue Weinflasche erfassen</b></td>
       </tr>
       <form action="?submit" method="post" enctype="multipart/form-data">
       <tr>
