@@ -17,6 +17,8 @@
   <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/theme.css" rel="stylesheet">
+  <!-- General Custom styles -->
+  <link href="css/custom.css" rel="stylesheet">
 </head>
 <?php include('config.inc.php'); ?>
   <body role="document">
