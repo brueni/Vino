@@ -19,7 +19,7 @@
                 INNER JOIN wine_def ON wine_entry.wine=wine_def.id
                 INNER JOIN types ON wine_def.type=types.id
                 INNER JOIN regales ON wine_entry.regal=regales.id
-                WHERE wine_def.id = $_GET[id]
+                WHERE wine_entry.id = $_GET[id]
                 LIMIT 1";
         $vine_result = mysql_query($vine_query, $db);
         $result = mysql_fetch_assoc($vine_result);
@@ -27,8 +27,11 @@
         echo "<div class=\"col-sm-3 hidden-xs\">a</div>";
         echo "<div class=\"col-sm-6\" style=\"border: #00ffff medium solid\">";
           echo "<div class=\"row\">
-                  <div class=\"col-xs-12\"><h1>" . $result['wine_def_name'] . "</h1></div>
+                  <div class=\"col-xs-12\"><a href=\"index.php\">Zur&uuml;ck</a></div>
                 </div>
+                <div class=\"row\">
+                        <div class=\"col-xs-12\"><h1>" . $result['wine_def_name'] . "</h1></div>
+                      </div>
                 <div class=\"row\">
                   <div class=\"col-xs-4\">
                     <img src=\"img/" . $result['wine_def_picture'] . "\" width=200px height=300px>
@@ -42,7 +45,12 @@
                     <div><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div>
                     <div><span class=\"glyphicon glyphicon-usd\">" . $result['wine_def_price'] . "</div>
                   </div>
-                  <div class=\"col-xs-8\"></div>
+                  <div class=\"col-xs-8\">
+                    <blockquote><p>" . $result['wine_def_description'] . "</p></blockquote>
+                  </div>
+                  <div class=\"col-xs-8\">
+                    <a href=\"index.php?drink=" . $result['id'] . "\" type=\"button\" class=\"btn btn-primary btn-block\">Flasche trinken</a>
+                  </div>
              </div>
             </div>";
         echo "<div class=\"col-sm-3 hidden-xs\">a</div></div>";
