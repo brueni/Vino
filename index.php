@@ -40,7 +40,7 @@
         // Something's here
         $result = mysql_fetch_assoc($vine_result);
         echo "<div class=\"row\"><div class=\"col-xs-12\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
-        echo "<div class=\"row\"><div class=\"col-xs-12\"><a href=\"wine_detail.php?id=" . $result['wine_def_id'] . "\"><img src=\"img/" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
+        echo "<div class=\"row\"><div class=\"col-xs-12\"><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
         echo "<div class=\"row\"><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
       } else {
         // Place is free
