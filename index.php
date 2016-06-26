@@ -1,6 +1,24 @@
   <?php include('include/head.php'); ?>
 
   <?php
+
+  if (isset($_GET['drink'])) {
+    $drink_query="UPDATE wine_entry SET drunk = '1' WHERE wine_entry.id = $_GET[drink]";
+    mysql_query($drink_query, $db);
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-2 hidden-xs\">&nbsp;</div><div class=\"col-sm-4\">";
+    echo "<button type=\"button\" class=\"btn btn-info\">Flasche " . $_GET['drink'] . " wurde getrunken!</button>&nbsp";
+    echo "</div><div class=\"col-sm-4\">";
+    echo "<a href=\"?revert=" . $_GET['drink'] . "\" class=\"btn btn-warning\">R&uuml;ckg&auml;ngig machen!</a>";
+    echo "</div></div>";
+  }
+
+  if (isset($_GET['revert'])) {
+    $drink_query="UPDATE wine_entry SET drunk = NULL WHERE wine_entry.id = $_GET[revert]";
+    mysql_query($drink_query, $db);
+    echo "<button type=\"button\" class=\"btn btn-info\">Flasche " . $_GET['revert'] . " wurde wieder eingetragen!</button>&nbsp";
+  }
+
   $regale_query="SELECT * FROM regales WHERE id = '1'";
   $regale_result = mysql_fetch_assoc(mysql_query($regale_query, $db));
   //echo $regale_result['rows'];
