@@ -44,12 +44,13 @@
                 FROM `wine_entry`
                 INNER JOIN wine_def ON wine_entry.wine=wine_def.id
                 INNER JOIN types ON wine_def.type=types.id
-                INNER JOIN regales ON wine_entry.regal=regales.id";
+                INNER JOIN regales ON wine_entry.regal=regales.id
+                WHERE wine_entry.drunk IS NULL";
       $result = mysql_query($query, $db);
       while($row = mysql_fetch_assoc($result)) {
         echo "<tr>
           <td>" . $row['id'] . "</td>
-          <td>[" . $row['wine'] . "] <img src=\"img/" . $row['wine_def_picture'] . "\" height=50px width=50px>&nbsp;" . $row['wine_def_name'] . "</td>
+          <td><img src=\"img/" . $row['wine_def_picture'] . "\" height=50px width=50px>&nbsp;" . $row['wine_def_name'] . "</td>
           <td>" . $row['regales_name'] . "</td>
           <td>" . $row['shelf'] . "</td>
           <td>" . $row['position'] . "</td>
@@ -87,7 +88,15 @@
             $c = 1;
             while($c <= $cols){
               $position_val = $row['id'] . "_" . $r . "_" . $c;
-              echo "<option value=\"" . $position_val . "\">" . $row['name'] . " / Reihe ". $r . " / Position" . $c . "</option>";
+              $check_query = "SELECT count(id) as count FROM wine_entry
+              WHERE regal = $row[id]
+              AND shelf = $r
+              AND position = $c
+              AND drunk IS NULL";
+              $count = mysql_fetch_assoc(mysql_query($check_query));
+              if ($count['count'] == 0) {
+                echo "<option value=\"" . $position_val . "\">" . $row['name'] . " / Reihe ". $r . " / Position" . $c . "</option>";
+              }
               $c++;
             }
             $r++;
