@@ -1,6 +1,8 @@
-Ignoring all the Bootstrap-Stuff
+#Ignoring all the Bootstrap-Stuff
 assets/*
 dist/*
 img/*
 example.php
 include/config.inc.php
+#Ignoring PHPThumb
+include/phpthumb/*
