@@ -1,16 +1,10 @@
   <?php include('include/head.php'); ?>
   <?php include('include/nav.php'); ?>
 
-  <?php
-  if (isset($_GET['submit'])) {
-      $position = explode('_', $_GET['position']);
-      $query = "INSERT INTO `wine_entry` (`id`, `wine`, `regal`, `shelf`, `position`, `year`, `gift`, `drunk`) VALUES (NULL, '$_GET[wine]', '$position[0]', '$position[1]', '$position[2]', '$_GET[year]', '$_GET[gift]', NULL)";
-      mysql_query($query, $db);
-  }
-   ?>
 <div class="container theme-showcase" role="main">
   <h1>Wein-Inventar</h1>
   <p>Erfassung der vorhandenen Weine</p>
+  <a href="entries-add.php">Neue Flasche hinzuf&uuml;gen</a>
   <table class="table">
     <thead>
       <tr>
@@ -61,54 +55,7 @@
         </tr>";
       }
     ?>
-      <tr>
-        <td colspan="9"><b>Neuen Typ erfassen</b></td>
-      </tr>
-      <form action="?submit" method="get">
-      <tr>
-        <td>&nbsp;</td>
-        <td><select name="wine">
-        <?php
-        $wine_query = "SELECT * FROM wine_def";
-        $result = mysql_query($wine_query, $db);
-        while($row = mysql_fetch_assoc($result)) {
-          echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-        }
-         ?>
-        </select></td>
-        <td colspan="3"><select name="position">
-        <?php
-        $regale_query = "SELECT * FROM regales";
-        $result = mysql_query($regale_query, $db);
-        while($row = mysql_fetch_assoc($result)) {
-          $r = 1;
-          $rows = $row['rows'];
-          $cols = $row['cols'];
-          while($r <= $rows) {
-            $c = 1;
-            while($c <= $cols){
-              $position_val = $row['id'] . "_" . $r . "_" . $c;
-              $check_query = "SELECT count(id) as count FROM wine_entry
-              WHERE regal = $row[id]
-              AND shelf = $r
-              AND position = $c
-              AND drunk IS NULL";
-              $count = mysql_fetch_assoc(mysql_query($check_query));
-              if ($count['count'] == 0) {
-                echo "<option value=\"" . $position_val . "\">" . $row['name'] . " / Reihe ". $r . " / Position" . $c . "</option>";
-              }
-              $c++;
-            }
-            $r++;
-          }
-        }
-         ?>
-        </select></td>
-        <td><input type="text" name="year"></td>
-        <td><input type="text" name="gift"></td>
-        <td><input type="submit" name="submit" value="new"></td>
-      </tr>
-      </form>
+
     </tbody>
   </table>
 </div>
