@@ -28,8 +28,8 @@
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-2 hidden-xs\">a</div>";
     while ($col_act <= $regale_result['cols']) {
+      echo "<div class=\"col-sm-1\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
 
-      echo "<div class=\"col-sm-1\" style=\"border: #00ffff medium solid\">";
 
     //  $vine_query="SELECT * FROM wine_entry WHERE regal = '1' AND shelf = $row_act AND position = $col_act AND drunk IS NULL ORDER BY shelf, position LIMIT 1"; //change to dynamic regale selection later
       $vine_query="SELECT wine_entry.*,
@@ -54,24 +54,25 @@
                 ORDER BY shelf, position
                 LIMIT 1";
       $vine_result = mysql_query($vine_query, $db);
+      echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"background-image:url(include/img/plank2.jpg)\">&nbsp;</div></div>";
       if (mysql_num_rows($vine_result)) {
         // Something's here
         $result = mysql_fetch_assoc($vine_result);
-        echo "<div class=\"row\"><div class=\"col-xs-12\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
-        echo "<div class=\"row\"><div class=\"col-xs-12\"><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
-        echo "<div class=\"row\"><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
+        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
+        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\" ><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
+        echo "<div class=\"row\" style=\"margin-left:5px\"><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
       } else {
         // Place is free
-        echo "frei<br>";
+        echo "&nbsp;";
       }
-      echo $row_act . " / " . $col_act . "<br>"; //Hier Regalbild
       echo "</div>";
       $col_act++;
     }
     $row_act--;
-    echo "<div class=\"col-sm-2 hidden-xs\">a</div>";
+    echo "<div class=\"col-sm-2 hidden-xs\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-repeat: no-repeat\">&nbsp</div>";
     echo "</div>";
   }
+  echo "<div class=\"row\"><div class=\"col-sm-12\" style=\"height:18px; background-image:url(include/img/plank2.jpg)\">&nbsp;</div></div>";
   ?>
   <?php include('include/nav.php'); ?>
   <?php include('include/footer.php'); ?>

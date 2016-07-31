@@ -25,7 +25,7 @@
         $result = mysql_fetch_assoc($vine_result);
         echo "<div class=\"row\">";
         echo "<div class=\"col-sm-3 hidden-xs\">a</div>";
-        echo "<div class=\"col-sm-6\" style=\"border: #00ffff medium solid\">";
+        echo "<div class=\"col-sm-6\" style=\"background-color:rgba(204, 204, 204, 0.8); padding:20px\">";
           echo "<div class=\"row\">
                   <div class=\"col-xs-12\"><a href=\"index.php\">Zur&uuml;ck</a></div>
                 </div>
@@ -33,7 +33,7 @@
                         <div class=\"col-xs-12\"><h1>" . $result['wine_def_name'] . "</h1></div>
                       </div>
                 <div class=\"row\">
-                  <div class=\"col-xs-4\">
+                  <div class=\"col-sm-4 col-xs-12\">
                     <img src=\"img/" . $result['wine_def_picture'] . "\" width=200px height=300px>
                   </div>
                   <div class=\"col-xs-4\">
@@ -53,7 +53,7 @@
                   </div>
              </div>
             </div>";
-        echo "<div class=\"col-sm-3 hidden-xs\">a</div></div>";
+        echo "<div class=\"col-sm-3 hidden-xs\">&nbsp</div></div>";
   ?>
   <?php include('include/nav.php'); ?>
   <?php include('include/footer.php'); ?>
