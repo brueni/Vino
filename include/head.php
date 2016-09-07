@@ -21,5 +21,5 @@
   <link href="css/custom.css" rel="stylesheet">
 </head>
 <?php include('config.inc.php');
-require_once('include/phpthumb/ThumbLib.inc.php'); ?>
+include('include/simpleimage/simpleimage.php') ?>
   <body role="document" style="background-image: url(include/img/bg_wall.jpg)">
