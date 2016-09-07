@@ -5,4 +5,5 @@ img/*
 example.php
 include/config.inc.php
 #Ignoring PHPThumb
-include/phpthumb/*
+include/simpleimage/*
+2do.md
