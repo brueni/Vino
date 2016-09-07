@@ -13,6 +13,18 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="index.php">Weinregal</a></li>
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regale<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <?php
+            $regal_query = "SELECT * FROM regales";
+            $regal_result = mysql_query($regal_query, $db);
+            while($regal = mysql_fetch_assoc($regal_result)) {
+              echo "<li><a href=\"index.php?regal=" . $regal['id'] . "\">" . $regal['name'] . "</a></li>";
+            }
+            ?>
+          </ul>
+        </li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Verwalten<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="entries.php">Weinvorrat</a></li>

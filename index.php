@@ -18,8 +18,12 @@
     mysql_query($drink_query, $db);
     echo "<button type=\"button\" class=\"btn btn-info\">Flasche " . $_GET['revert'] . " wurde wieder eingetragen!</button>&nbsp";
   }
-
-  $regale_query="SELECT * FROM regales WHERE id = '1'";
+  if (!isset($_GET['regal'])) {
+    $regal = '1';
+  } else {
+    $regal = $_GET['regal'];
+  }
+  $regale_query="SELECT * FROM regales WHERE id = $regal";
   $regale_result = mysql_fetch_assoc(mysql_query($regale_query, $db));
   //echo $regale_result['rows'];
   $row_act = $regale_result['rows'];
@@ -29,9 +33,6 @@
     echo "<div class=\"col-sm-2 hidden-xs\">a</div>";
     while ($col_act <= $regale_result['cols']) {
       echo "<div class=\"col-sm-1\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
-
-
-    //  $vine_query="SELECT * FROM wine_entry WHERE regal = '1' AND shelf = $row_act AND position = $col_act AND drunk IS NULL ORDER BY shelf, position LIMIT 1"; //change to dynamic regale selection later
       $vine_query="SELECT wine_entry.*,
                 wine_def.id AS wine_def_id,
                 wine_def.name AS wine_def_name,
@@ -50,7 +51,7 @@
                 INNER JOIN wine_def ON wine_entry.wine=wine_def.id
                 INNER JOIN types ON wine_def.type=types.id
                 INNER JOIN regales ON wine_entry.regal=regales.id
-                WHERE regal = '1' AND shelf = $row_act AND position = $col_act AND drunk IS NULL
+                WHERE regal = $regal AND shelf = $row_act AND position = $col_act AND drunk IS NULL
                 ORDER BY shelf, position
                 LIMIT 1";
       $vine_result = mysql_query($vine_query, $db);
@@ -59,7 +60,7 @@
         // Something's here
         $result = mysql_fetch_assoc($vine_result);
         echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
-        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\" ><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
+        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\" ><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/square_" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
         echo "<div class=\"row\" style=\"margin-left:5px\"><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
       } else {
         // Place is free
