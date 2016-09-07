@@ -41,7 +41,7 @@
               $thumb->resize(100, 100);
               $thumb->save('tmb_$picturename');*/
               //Add PHPThumb later
-              $query = "INSERT INTO `wine_def` (`id`, `name`, `description`, `type`, `source`, `price`, `store_time`, `picture`) VALUES (NULL, '$_POST[name]', '$_POST[description]', '$_POST[type]',  '$_POST[source]', '$_POST[price]', '$_POST[store_time]', '$picturename')";
+              $query = "INSERT INTO `wine_def` (`id`, `name`, `description`, `type`, `source`, `price`, `store_time`, `picture`, `grape`, `country`) VALUES (NULL, '$_POST[name]', '$_POST[description]', '$_POST[type]',  '$_POST[source]', '$_POST[price]', '$_POST[store_time]', '$picturename', '$_POST[grape]', '$_POST[country]')";
               //echo $query;
               mysql_query($query, $db);
               echo "Weinsorte wurde erfasst";
@@ -90,6 +90,30 @@
         <div class="row">
           <div class="col-sm-6">Lagerdauer</div>
           <div class="col-sm-6"><input type="text" name="store_time"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Traubensorte</div>
+          <div class="col-sm-6"><select name="grape">
+            <?php
+            $grape_query = "SELECT * FROM grapes";
+            $grape_result = mysql_query($grape_query, $db);
+            while($grape = mysql_fetch_assoc($grape_result)) {
+              echo "<option value=\"" . $grape['id'] . "\">" . $grape['name'] . "</option>";
+            }
+             ?>
+          </select></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Land</div>
+          <div class="col-sm-6"><select name="country">
+            <?php
+            $country_query = "SELECT * FROM country";
+            $country_result = mysql_query($country_query, $db);
+            while($country = mysql_fetch_assoc($country_result)) {
+              echo "<option value=\"" . $country['id'] . "\">" . $country['name'] . "</option>";
+            }
+             ?>
+          </select></div>
         </div>
         <div class="row">
           <div class="col-sm-6">Bild</div>

@@ -6,7 +6,7 @@
       $position = explode('_', $_GET['position']);
       $query = "INSERT INTO `wine_entry` (`id`, `wine`, `regal`, `shelf`, `position`, `year`, `gift`, `drunk`) VALUES (NULL, '$_GET[wine]', '$position[0]', '$position[1]', '$position[2]', '$_GET[year]', '$_GET[gift]', NULL)";
       mysql_query($query, $db);
-      echo "Flasche wurde erfasst"
+      echo "Flasche wurde erfasst";
   }
    ?>
 <div class="container theme-showcase" role="main">

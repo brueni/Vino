@@ -12,6 +12,8 @@
         <th>Name</th>
         <th>Beschreibung</th>
         <th>Typ</th>
+        <th>Traubensorte</th>
+        <th>Land</th>
         <th>Quelle</th>
         <th>Preis</th>
         <th>Lagerdauer</th>
@@ -21,7 +23,14 @@
     </thead>
     <tbody>
       <?php
-        $query = "SELECT wine_def.*, types.name AS types_name FROM wine_def INNER JOIN types ON wine_def.type=types.id";
+        $query = "SELECT wine_def.*,
+        types.name AS types_name ,
+        grapes.name AS grapes_name,
+        country.name AS country_name
+        FROM wine_def
+        INNER JOIN types ON wine_def.type=types.id
+        INNER JOIN grapes ON wine_def.grape=grapes.id
+        INNER JOIN country ON wine_def.country=country.id";
         $result = mysql_query($query, $db);
         while($row = mysql_fetch_assoc($result)) {
           echo "<tr>
@@ -29,6 +38,8 @@
             <td>" . $row['name'] . "</td>
             <td>" . $row['description'] . "</td>
             <td>" . $row['types_name'] . "</td>
+            <td>" . $row['grapes_name'] . "</td>
+            <td>" . $row['country_name'] . "</td>
             <td>" . $row['source'] . "</td>
             <td>" . $row['price'] . "</td>
             <td>" . $row['store_time'] . "</td>
