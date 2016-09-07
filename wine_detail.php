@@ -7,6 +7,7 @@
                 wine_def.description AS wine_def_description,
                 wine_def.type AS wine_def_type,
                 wine_def.price AS wine_def_price,
+                wine_def.source AS wine_def_source,
                 wine_def.store_time AS wine_def_storetime,
                 wine_def.picture AS wine_def_picture,
                 wine_def.grape AS wine_def_grape,
@@ -43,14 +44,14 @@
               </div>
               <div class=\"row\">
                 <div class=\"col-sm-4 col-xs-12 text-center\" style=\"padding:5px\">
-                  <img src=\"img/" . $result['wine_def_picture'] . "\" width=200px height=300px>
+                  <img src=\"img/thumb_" . $result['wine_def_picture'] . "\">
                 </div>
                 <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-glass\"></span>&nbsp;" . $result['types_name'] . " | " . $result['grapes_name'] . "</div>
                 <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-calendar\"></span>&nbsp;Jahrgang: " . $result['year'] . "</div>
                 <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-globe\"></span>&nbsp;" . $result['country_name'] . "</div>
                 <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-calendar\"></span>&nbsp;Opt.&nbsp;Trinkjahr: " . $trinkjahr . "</div>
                 <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-gift\"></span>&nbsp;" . $result['gift'] . "</div>
-                <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-usd\"></span>&nbsp;" . $result['wine_def_price'] . ".-</div>
+                <div class=\"col-sm-4 col-xs-6\"><span class=\"glyphicon glyphicon-usd\"></span>&nbsp;" . $result['wine_def_price'] . ".- | " . $result['wine_def_source'] . "</div>
                 <div class=\"col-sm-8 col-xs-12\"><blockquote><p>" . $result['wine_def_description'] . "</p></blockquote></div>
                 <div class=\"col-sm-8 col-xs-12\"><a href=\"index.php?drink=" . $result['id'] . "\" type=\"button\" class=\"btn btn-primary btn-block\">Flasche trinken</a></div>
               </div>

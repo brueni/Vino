@@ -37,6 +37,17 @@
       } else {
           if (move_uploaded_file($_FILES["upload_picture"]["tmp_name"], $target_file)) {
               $picturename = basename($_FILES["upload_picture"]["name"]);
+              try {
+                $img = new abeautifulsite\SimpleImage('img/' . $picturename);
+                $img->best_fit(300, 300)->thumbnail(200, 300)->save('img/thumb_' . $picturename);
+                $img2 = new abeautifulsite\SimpleImage('img/' . $picturename);
+                $img2->best_fit(100, 150)->thumbnail(100, 100)->save('img/square_' . $picturename);
+                $img3 = new abeautifulsite\SimpleImage('img/' . $picturename);
+                $img3->save('img/orig_' . $picturename);
+                unlink('img/' . $picturename);
+              } catch(Exception $e) {
+                echo 'Error: ' . $e->getMessage();
+              }
               /*$thumb = PhpThumbFactory::create('../../img/' . $picturename);
               $thumb->resize(100, 100);
               $thumb->save('tmb_$picturename');*/
@@ -122,6 +133,9 @@
         <div class="row">
           <div class="col-sm-6">Eintragen</div>
           <div class="col-sm-6"><input type="submit" name="submit" value="new"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">&nbsp;</div>
         </div>
 
       </form>
