@@ -43,7 +43,7 @@
             <td>" . $row['source'] . "</td>
             <td>" . $row['price'] . "</td>
             <td>" . $row['store_time'] . "</td>
-            <td><img src=\"img/" . $row['picture'] . "\" width=\"100px\" height=\"100px\"></td>
+            <td><img src=\"img/square_" . $row['picture'] . "\" width=\"100px\" height=\"100px\"></td>
             <td>&nbsp;</td>
           </tr>";
         }
