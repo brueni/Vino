@@ -30,7 +30,7 @@
   while ($row_act != '0') {
     $col_act = "1";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-2 hidden-xs\">a</div>";
+    echo "<div class=\"col-sm-2 hidden-xs\">&nbsp;</div>";
     while ($col_act <= $regale_result['cols']) {
       echo "<div class=\"col-sm-1\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
       $vine_query="SELECT wine_entry.*,
