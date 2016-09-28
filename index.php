@@ -32,7 +32,7 @@
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-2 hidden-xs\">&nbsp;</div>";
     while ($col_act <= $regale_result['cols']) {
-      echo "<div class=\"col-sm-1\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
+      echo "<div class=\"col-sm-1\" style=\"height:250px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
       $vine_query="SELECT wine_entry.*,
                 wine_def.id AS wine_def_id,
                 wine_def.name AS wine_def_name,
