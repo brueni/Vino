@@ -32,7 +32,7 @@
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-2 hidden-xs\">&nbsp;</div>";
     while ($col_act <= $regale_result['cols']) {
-      echo "<div class=\"col-sm-1\" style=\"height:250px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
+      echo "<div class=\"col-sm-1\" style=\"height:240px; background-image:url(include/img/plank1.jpg); background-color:rgba(204, 204, 204, 0.8); background-repeat: no-repeat; \">";
       $vine_query="SELECT wine_entry.*,
                 wine_def.id AS wine_def_id,
                 wine_def.name AS wine_def_name,
@@ -59,9 +59,9 @@
       if (mysql_num_rows($vine_result)) {
         // Something's here
         $result = mysql_fetch_assoc($vine_result);
-        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
-        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center\" ><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/square_" . $result['wine_def_picture'] . "\" width=100px height=100px></a></div></div>"; //Change Thumb-Size later
-        echo "<div class=\"row\" style=\"margin-left:5px\"><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-6\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
+        echo "<div class=\"row\"><div class=\"col-xs-12\" style=\"text-align:center;height:75px\"><h4>" . $result['wine_def_name'] . "</h4></div></div>";
+        echo "<div class=\"row\" style=\"margin-left:1  px\"><div class=\"col-xs-12\" style=\"text-align:center\" ><a href=\"wine_detail.php?id=" . $result['id'] . "\"><img src=\"img/crop_" . $result['wine_def_picture'] . "\" ></a></div></div>"; //Change Thumb-Size later
+        echo "<div class=\"row\" style=\"margin-left:5px\"><div class=\"col-xs-12\"><span class=\"glyphicon glyphicon-glass\">" . $result['types_name'] . "</div><div class=\"col-xs-12\"><span class=\"glyphicon glyphicon-calendar\">" . $result['year'] . "</div></div>";
       } else {
         // Place is free
         echo "&nbsp;";
@@ -70,7 +70,7 @@
       $col_act++;
     }
     $row_act--;
-    echo "<div class=\"col-sm-2 hidden-xs\" style=\"height:200px; background-image:url(include/img/plank1.jpg); background-repeat: no-repeat\">&nbsp</div>";
+    echo "<div class=\"col-sm-2 hidden-xs\" style=\"height:240px; background-image:url(include/img/plank1.jpg); background-repeat: no-repeat\">&nbsp</div>";
     echo "</div>";
   }
   echo "<div class=\"row\"><div class=\"col-sm-12\" style=\"height:18px; background-image:url(include/img/plank2.jpg)\">&nbsp;</div></div>";

@@ -44,7 +44,7 @@
       while($row = mysql_fetch_assoc($result)) {
         echo "<tr>
           <td>" . $row['id'] . "</td>
-          <td><img src=\"img/" . $row['wine_def_picture'] . "\" height=50px width=50px>&nbsp;" . $row['wine_def_name'] . "</td>
+          <td><img src=\"img/crop_" . $row['wine_def_picture'] . "\" height=50px width=25px>&nbsp;" . $row['wine_def_name'] . "</td>
           <td>" . $row['regales_name'] . "</td>
           <td>" . $row['shelf'] . "</td>
           <td>" . $row['position'] . "</td>

@@ -41,7 +41,7 @@
                 $img = new abeautifulsite\SimpleImage('img/' . $picturename);
                 $img->best_fit(300, 300)->thumbnail(200, 300)->save('img/thumb_' . $picturename);
                 $img2 = new abeautifulsite\SimpleImage('img/' . $picturename);
-                $img2->best_fit(100, 150)->thumbnail(100, 100)->save('img/square_' . $picturename);
+                $img2->best_fit(100, 100)->thumbnail(50, 100)->save('img/crop_' . $picturename);
                 $img3 = new abeautifulsite\SimpleImage('img/' . $picturename);
                 $img3->save('img/orig_' . $picturename);
                 unlink('img/' . $picturename);
